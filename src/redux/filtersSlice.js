@@ -1,4 +1,3 @@
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const filtersSlice = createSlice({
@@ -14,4 +13,4 @@ const filtersSlice = createSlice({
 });
 
 export const { changeFilter } = filtersSlice.actions;
-export const filtersReducer = filtersSlice.reducer;
+export default filtersSlice.reducer;

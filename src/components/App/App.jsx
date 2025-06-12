@@ -1,11 +1,10 @@
-import React from 'react';
 import ContactForm from '../ContactForm/ContactForm';
 import SearchBox from '../SearchBox/SearchBox';
 import ContactList from '../ContactList/ContactList';
 
 const App = () => {
   return (
-    <div style={{ padding: '20px' }}>
+    <div>
       <h1>Phonebook</h1>
       <ContactForm />
       <SearchBox />
