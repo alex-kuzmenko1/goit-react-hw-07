@@ -3,9 +3,11 @@ export const selectNameFilter = state => state.filters.name;
 
 export const selectFilteredContacts = state => {
   const contacts = selectContacts(state);
-  const filter = selectNameFilter(state).toLowerCase();
+  const filter = selectNameFilter(state)?.toLowerCase() || '';
 
-  return contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter)
-  );
+  return contacts
+    .filter(contact => contact?.name) 
+    .filter(contact =>
+      contact.name.toLowerCase().includes(filter)
+    );
 };
