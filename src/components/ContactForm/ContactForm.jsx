@@ -1,25 +1,26 @@
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/contactsOps';
 import styles from './ContactForm.module.css';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.elements.name.value;
-    const number = form.elements.number.value;
-
-    dispatch(addContact({ name, number }));
+  const handleSubmit = evt => {
+    evt.preventDefault();
+    const form = evt.target;
+    const newContact = {
+      name: form.elements.name.value,
+      number: form.elements.number.value,
+    };
+    dispatch(addContact(newContact));
     form.reset();
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <input type="text" name="name" placeholder="Name" required />
-      <input type="tel" name="number" placeholder="Number" required />
-      <button type="submit">Add Contact</button>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <input type="text" name="name" required placeholder="Ім’я" />
+      <input type="tel" name="number" required placeholder="Номер" />
+      <button type="submit">Додати контакт</button>
     </form>
   );
 };
